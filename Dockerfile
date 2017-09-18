@@ -17,17 +17,15 @@ SHELL ["/bin/bash", "-c"]
 WORKDIR /root
 RUN apt-get update && apt-get install -y -o "DPkg::Options::=--force-confold" -o "DPkg::Options::=--force-confdef" systemd-sysv rsyslog net-tools iputils-ping
 RUN apt-get -q -y -o "DPkg::Options::=--force-confold" -o "DPkg::Options::=--force-confdef" dist-upgrade
-RUN apt-get install -y -o "DPkg::Options::=--force-confold" -o "DPkg::Options::=--force-confdef" isc-dhcp-server tftpd-hpa samba pxelinux
+RUN apt-get install -y -o "DPkg::Options::=--force-confold" -o "DPkg::Options::=--force-confdef" isc-dhcp-server tftpd-hpa samba
 RUN apt-get -q -y autoremove && apt-get -q -y clean
 ADD tftpd-hpa.sh .
 ADD isc-dhcp-server.sh .
 ADD run.sh .
-ADD pxe.sh .
 ADD samba.sh .
 RUN mkdir -p /var/pxe
 RUN mkdir -p /etc/dhcp
 VOLUME /var/pxe
-RUN . pxe.sh
 RUN . tftpd-hpa.sh
 RUN . isc-dhcp-server.sh
 RUN . samba.sh
