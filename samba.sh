@@ -38,3 +38,5 @@ echo -ne "
    security = share
    quest ok = yes
 " > /etc/samba/smb.conf
+
+smbpasswd -a root -n

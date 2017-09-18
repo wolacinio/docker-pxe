@@ -1,0 +1,20 @@
+version: "1"
+services:
+  web:
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 500M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "69:69"
+      - "445:445"
+      - "68:68"
+      - "67:67"
+    networks:
+      - bridge
+networks:
+  bridge:
