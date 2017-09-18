@@ -18,4 +18,7 @@ Run:
 docker run -d --name pxe -v D:\pxe:/var/pxe/ -it pxe bash
 ```
 
-Where partition `D:\pxe' include files: pxelinux.0, memdisk, winpe and other.
+Where partition ```D:\pxe``` include files: pxelinux.0, memdisk, winpe and other.
+
+Uses:
+[docker-debian-artifacts](https://github.com/debuerreotype/docker-debian-artifacts)
